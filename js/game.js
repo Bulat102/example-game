@@ -105,8 +105,7 @@ gameScene.gameOver = function(){
 }
 
 gameScene.timerLoop = function(){
-	console.log(1);
-	let progress =  this.timerEvent.getRepeatCount();
+	let progress =  this.timerEvent.getRepeatCount()-1;
 	this.timerText.setText(progress);
 	if (progress == 0){
 		this.gameOver();
