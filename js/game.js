@@ -51,7 +51,7 @@ gameScene.create = function(){
 	this.cameras.main.resetFX();
 	
 	this.timer = 1000 * 20;
-	this.timerText = this.add.text(16, 16, this.timer / 1000, {fontSize: '32px'});
+	this.timerText = this.add.text(16, 16, this.timer / 1000, {fontSize: '32px', fontStyle: 'bold'});
 	let delay = 1000;
 	
 	this.timerEvent = this.time.addEvent({callback: this.timerLoop, delay: delay, repeat: this.timer/delay, callbackScope :this});
