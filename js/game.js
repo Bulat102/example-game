@@ -23,6 +23,8 @@ gameScene.preload = function(){
 }
 
 gameScene.create = function(){
+	name = String(window.location.search).slice(6); //Имя игрока
+	
 	let bg = this.add.sprite(0,0, 'background');
 	bg.setOrigin(0,0);
 	
@@ -51,7 +53,8 @@ gameScene.create = function(){
 	this.cameras.main.resetFX();
 	
 	this.timer = 1000 * 20;
-	this.timerText = this.add.text(16, 16, this.timer / 1000, {fontSize: '32px', fontStyle: 'bold'});
+	this.timerText = this.add.text(16, 16, this.timer / 1000, {fontSize: '32px', fontStyle:'bold'});
+	this.helloText = this.add.text(100, 16, String(name), {fontSize: '16px', fontStyle:'bold'});
 	let delay = 1000;
 	
 	this.timerEvent = this.time.addEvent({callback: this.timerLoop, delay: delay, repeat: this.timer/delay, callbackScope :this});
@@ -105,7 +108,8 @@ gameScene.gameOver = function(){
 }
 
 gameScene.timerLoop = function(){
-	let progress =  this.timerEvent.getRepeatCount()-1;
+	console.log(1);
+	let progress =  this.timerEvent.getRepeatCount();
 	this.timerText.setText(progress);
 	if (progress == 0){
 		this.gameOver();
