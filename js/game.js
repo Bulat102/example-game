@@ -23,7 +23,7 @@ gameScene.preload = function(){
 }
 
 gameScene.create = function(){
-	name = String(window.location.search).slice(6); //Имя игрока
+	name = String(decodeURIComponent(window.location.search)).slice(6); //Имя игрока
 	
 	let bg = this.add.sprite(0,0, 'background');
 	bg.setOrigin(0,0);
