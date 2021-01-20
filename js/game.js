@@ -23,7 +23,7 @@ gameScene.preload = function(){
 }
 
 gameScene.create = function(){
-	name = String(decodeURIComponent(window.location.search)).slice(6); //Имя игрока
+	this.name = String(decodeURIComponent(window.location.search)).slice(6); //Имя игрока
 	
 	let bg = this.add.sprite(0,0, 'background');
 	bg.setOrigin(0,0);
@@ -90,6 +90,7 @@ gameScene.update = function(){
 	if(Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.treasure.getBounds())){
 		this.timerEvent.destroy();
 		this.treasure.visible=false;
+		this.set_score(this.name,this.timerEvent.getRepeatCount());
 	}
 }
 
@@ -115,3 +116,36 @@ gameScene.timerLoop = function(){
 		this.gameOver();
 	}
 }
+
+//Отправка результата и поулчение таблицы
+gameScene.setScore = function(name,score){
+			var xhr = new XMLHttpRequest();
+			
+			var json = JSON.stringify({
+				name: name,
+				score: score
+			});
+			
+			xhr.open("POST","HTTPS://Bulat102.pythonanywhere.com/set_score",true);
+			xhr.setRequestHeader("Content-type",'application/json; charset=utf-8');
+			
+			xhr.send(json);
+			
+			console.log('Запрос отправлен');
+			
+			xhr.onreadystatechange = function(){
+				if (xhr.readyState !=4) return;
+			
+				if (xhr.status != 200){
+					//обработать ошибку
+					alert("Ошибка " + xhr.status + ': ' + xhr.statusText);
+				} else {
+					// вывести результат
+					let table = xhr.responseText;
+					for (let i=0; i< table.length; i++){
+						table[i] = String(i+1)+'. '+table[i]+'\n';
+					}
+					alert(table);
+				}
+			}
+		}
