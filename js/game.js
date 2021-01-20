@@ -54,7 +54,7 @@ gameScene.create = function(){
 	
 	this.timer = 1000 * 20;
 	this.timerText = this.add.text(16, 16, this.timer / 1000, {fontSize: '32px', fontStyle:'bold'});
-	this.helloText = this.add.text(100, 16, String(name), {fontSize: '16px', fontStyle:'bold'});
+	this.helloText = this.add.text(100, 16, String(this.name), {fontSize: '16px', fontStyle:'bold'});
 	let delay = 1000;
 	
 	this.timerEvent = this.time.addEvent({callback: this.timerLoop, delay: delay, repeat: this.timer/delay, callbackScope :this});
