@@ -90,6 +90,7 @@ gameScene.update = function(){
 	if(Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.treasure.getBounds())){
 		this.timerEvent.destroy();
 		this.treasure.visible=false;
+		this.isPlayerAlive = false;
 		this.setScore(this.name,this.timerEvent.getRepeatCount());
 	}
 }
