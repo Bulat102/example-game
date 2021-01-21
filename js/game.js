@@ -78,7 +78,7 @@ gameScene.update = function(){
 		}
 		
 		if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), enemies[i].getBounds())){
-			this.gameOver();
+			//this.gameOver();
 			break;
 		}
 	}
