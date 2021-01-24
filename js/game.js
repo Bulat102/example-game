@@ -91,7 +91,7 @@ gameScene.update = function(){
 		this.timerEvent.destroy();
 		this.treasure.visible=false;
 		this.isPlayerAlive = false;
-		this.setScore(this.name,this.timerEvent.getRepeatCount());
+		this.setScore(this.name,this.timerText.getText());
 	}
 }
 
