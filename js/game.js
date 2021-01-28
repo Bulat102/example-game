@@ -128,7 +128,7 @@ gameScene.setScore = function(name,score){
 				score: score
 			});
 			
-			xhr.open("POST","HTTPS://Bulat102.pythonanywhere.com/set_score",true);
+			xhr.open("POST","HTTPS://Bulat102.pythonanywhere.com/set_score/atp",true);
 			xhr.setRequestHeader("Content-type",'application/json; charset=utf-8');
 			
 			xhr.send(json);
